@@ -1,0 +1,46 @@
+settings change
+
+notebook.output
+control how many lines of text in a text output is rendered --> changed to 100
+
+
+Pandas Tutorial
+
+Creating, Reading And writing
+--> 2 core objects
+- DataFrame
+Series
+--> DataFrame
+pd. DataFrame ({'Yes' : [1,2], 'No' : [3,4]})
+Basically yahan pe dataframe bana raha hain, key hamari column name hoti hai aur row hamari entries yahan pe row label automatically 
+aa jaayenge as in 0,1,2,3... in case Khudlikhna chahte hai index use karene jaise neeche kiya pd.
+DataFrame ({'Yes' :[1,2], 'No': [3,4],index= ['Product A', 'Product B' ]})
+--> Series
+pd.Series ([1, 2, 3, 4, 5])
+Series is basically list of values.
+pd.Series ([30, 35, 40], index-['2015 Sales', '2016 sales',
+'2017 Sales '], name='Product A')
+vaha pe index assign kar sake hain and ek overall name jaise upar kiya hain.
+- -> Ham data read jo karte hain vo basically ek dataframe mein karte hain using
+df = pd.read_csv('")
+- - > we can use shape attribute to check how large our data is
+Indexing,selecting and Assigning
+-_> if we want to access some attribute for dataframe then, say attribute name is country df.country or
+dfr ' country']
+Basically access like that in dictionary or way we did in class (OOPS).
+To search further do like df ' country'][0]
+indexing
+To select the first row df.iloc [0]
+df.iloc[:, 0] df.iloc[:3, 0]
+df.iloc[[0, 1, 2], 0] can also pass a list df.iloc[-5:] can also pass negative numbers
+
+df.loc[0, 'country']
+df.loc[:, ['taster _name', 'taster_twitter handle', 'points']] df.set index("title")
+df.country == 'Italy' df.loc[df.country == 'Italy']
+df.loc[(df.country == 'Italy*) & (df.points ›= 90)] 
+df.loc[ (df.country == 'Italy') | (df.points ›= 90)]
+df.loc[df.country.isin(['Italy', 'France '])] df.loc[df.price.notnull()]
+df['critic'][1] = 'everyone'
+df[ 'critic']
+df['index backwards'] = range(len(df); 0, -1)
+df['index backwards']
