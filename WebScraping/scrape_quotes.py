@@ -22,9 +22,14 @@ def get_all_quotes():
                   for quote in soup.find_all('span', class_='text')]
     return list(set(all_quotes))
 
-
+def get_top_10_tags():
+    top_10_tags = [tag.a.text for tag in soup.find_all('span', class_ = 'tag-item')]
+    return top_10_tags
+    
 soup = fetch_webpage(url)
 author_names = get_author_names()
 all_quotes = get_all_quotes()
+top_10_tags = get_top_10_tags()
 print(author_names)
 print(all_quotes)
+print(top_10_tags)
