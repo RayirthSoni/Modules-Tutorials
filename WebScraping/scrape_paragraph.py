@@ -3,10 +3,11 @@ import bs4
 import os
 import re
 
-# path for directory on which will be working on 
+# path for directory on which will be working on
 CURRENT_WORKING_DIRECTORY_PATH = os.getcwd()
 # path for webscarping folder
-WEBSCRAPING_FOLDER_PATH = os.path.join(CURRENT_WORKING_DIRECTORY_PATH, 'WebScraping')
+WEBSCRAPING_FOLDER_PATH = os.path.join(
+    CURRENT_WORKING_DIRECTORY_PATH, 'WebScraping')
 
 # url from which to fetch data
 WEBPAGE_URL = 'https://en.wikipedia.org/wiki/India'
@@ -18,33 +19,37 @@ html_content = requests.get(WEBPAGE_URL)
 soup = bs4.BeautifulSoup(html_content.text, 'lxml')
 
 # Function to create folder
+
+
 def create_folder(folder_name):
-    
+
     try:
-        
-        text_folder_path = os.path.join(CURRENT_WORKING_DIRECTORY_PATH,folder_name)
-        
+
+        text_folder_path = os.path.join(
+            CURRENT_WORKING_DIRECTORY_PATH, folder_name)
+
         if not os.path.exists(text_folder_path):
             os.makedirs(text_folder_path)
             print(f'Folder Created at : {text_folder_path}')
-            
+
         else:
             print(f'Folder Already exists at : {text_folder_path}')
-    
+
+        return text_folder_path
+
     except Exception as e:
         print(e)
-
 
 
 def get_webpage():
 
     try:
-        
+
         html_content = requests.get(WEBPAGE_URL)
         soup = bs4.BeautifulSoup(html_content.text, 'lxml')
 
         return soup
-    
+
     except Exception as e:
         print(e)
 
@@ -70,18 +75,21 @@ def get_paragraph_text():
     except Exception as e:
         print(e)
 
-def write_content_to_file():
-    
-    create_folder
-    
+
+def write_content_to_file(entire_paragraph):
+
+    text_folder_path = create_folder('Text Folder')
+
     try:
-        
-        pass
-    
+        text_file_path = os.path.join(text_folder_path, 'paragraph.txt')
+        with open(text_file_path, 'w') as f:
+            f.write(entire_paragraph)
+        print(f'Content Written to file : {text_file_path}')
+
     except Exception as e:
         print(e)
-    
 
 
 soup = get_webpage()
 entire_paragraph = get_paragraph_text()
+write_content_to_file(entire_paragraph)
